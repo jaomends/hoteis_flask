@@ -14,7 +14,7 @@ dados = [
     {'nome': 'Pedro', 'idade': 28, 'cidade': 'Belo Horizonte'}
 ]
 
-# resultado = colecao.insert_many(dados)
+resultado = colecao.insert_many(dados)
 
 # print('Foram inseridos', resultado.inserted_ids, 'documentos')
 
