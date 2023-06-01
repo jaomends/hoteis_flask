@@ -1,4 +1,5 @@
 from sql_alchemy import banco
+from models.mongo_import import db
 
 class HotelModel(banco.Model):
 
@@ -37,13 +38,17 @@ class HotelModel(banco.Model):
     def save_hotel(self):
         banco.session.add(self)
         banco.session.commit()
+        db.hotel.insert_one(self.json())
+
 
     def update_hotel(self, nome, estrelas, diaria, cidade):
         self.nome = nome
         self.estrelas = estrelas
         self.diaria = diaria
-        self.cidade = cidade
+        self.cidade = cidade       
+
 
     def delete_hotel(self):
         banco.session.delete(self)
         banco.session.commit()
+        db.hotel.delete_one(self.json())

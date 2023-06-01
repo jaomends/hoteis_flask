@@ -1,5 +1,7 @@
 from flask_restful import Resource, reqparse
 from models.hotel import HotelModel
+from models.mongo_import import db
+
 
 class Hoteis(Resource):
     def get(self):
@@ -44,10 +46,20 @@ class Hotel(Resource):
             hotel_encontrado.save_hotel()
             return hotel_encontrado.json(), 200
         
+        filtro = {'hotel_id': hotel_encontrado}
+        update = {'$set': {'hotel_id': self.hotel_id,
+            'nome': self.nome,
+            'estrelas': self.estrelas,
+            'diaria': self.diaria,
+            'cidade': self.cidade}}
+        return db.update_one(filtro, update)
+
+
         hotel = HotelModel(hotel_id, **dados)
         hotel.save_hotel()
+        
         return hotel.json(), 201 # created
-
+        
 
     def delete(self, hotel_id):
         hotel = HotelModel.find_hotel(hotel_id)
