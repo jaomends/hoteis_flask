@@ -1,26 +1,34 @@
-import math
+# import math
+
 
 # Funções auxiliares
 def rotr(x, n):
     return (x >> n) | (x << (32 - n))
 
+
 def ch(x, y, z):
     return (x & y) ^ (~x & z)
+
 
 def maj(x, y, z):
     return (x & y) ^ (x & z) ^ (y & z)
 
+
 def sigma0(x):
     return rotr(x, 2) ^ rotr(x, 13) ^ rotr(x, 22)
+
 
 def sigma1(x):
     return rotr(x, 6) ^ rotr(x, 11) ^ rotr(x, 25)
 
+
 def gamma0(x):
     return rotr(x, 7) ^ rotr(x, 18) ^ (x >> 3)
 
+
 def gamma1(x):
     return rotr(x, 17) ^ rotr(x, 19) ^ (x >> 10)
+
 
 # Constantes do SHA-256
 k = [
@@ -115,6 +123,7 @@ def sha256(mensagem):
     # Conversão dos valores finais do hash para hexadecimal
     hash_sha256 = ''.join(format(x, '08x') for x in h)
     return hash_sha256
+
 
 # Exemplo de uso
 mensagem = "Exemplo de mensagem"
