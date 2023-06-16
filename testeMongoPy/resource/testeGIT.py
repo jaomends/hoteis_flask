@@ -1,15 +1,18 @@
 import os
 from git import Repo
 
+repo_path = r'C:\Users\joao mendes\Desktop\projectX'
 diretorio_atual = os.getcwd()
+
+
+repo = Repo.clone_from('http://192.168.0.13/design/designDiplomas.git',
+                       os.path.join(repo_path, 'design_diplomas'),
+                       branch="main")
+
 
 # repo = Repo(diretorio_atual, 'hoteis_flask')
 
 # repo_path = os.path.join(diretorio_atual, 'hoteis_flask')
-
-repo = Repo.clone_from('http://github.com/jaomends/hoteis_flask.git',
-                       os.path.join(diretorio_atual, 'teste_git'),
-                       branch="master")
 
 # repo = Repo(repo_path)
 
