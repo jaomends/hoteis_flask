@@ -1,0 +1,45 @@
+const MyDataGrid = () => {
+  const [dados, setDados] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+axios.get('http://127.0.0.1:5000/design/files')
+  .then(response => {
+    // Manipule a resposta dos dados aqui
+    console.log(response.data);
+  })
+  .catch(error => {
+    // Trate o erro caso ocorra
+    console.error(error);
+  });
+
+
+const columns = [
+  { field: 'fileName', headerName: 'File name', width: 160 },
+  { field: 'pathName', headerName: 'Path direction', width: 430 },
+];
+
+const rows = [
+  { id: 541818718199, fileName: 'Snow', pathName: 'Jon'},
+  { id: 25581818919, fileName: 'Lannister', pathName: 'Cersei'},
+];
+
+export default function DataTable() {
+  return (
+    <div style={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 5 },
+          },
+        }}
+        pageSizeOptions={[5, 10]}
+        checkboxSelection
+      />
+    </div>
+  );
+}

@@ -1,0 +1,35 @@
+{
+  "name": "jysgz9--run",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
+    "@mui/material": "5.13.7",
+    "@mui/x-data-grid": "^6.9.2",
+    "axios": "^1.4.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start --port 5000",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
